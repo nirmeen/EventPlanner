@@ -15,4 +15,10 @@
 
     <string name="verify_note">To get access to missal readings, prayers and lots more, kindly log in with your mobile number.</string>
     <string name="code_instructions">Your details would never be shared</string>
+
+    <string name="profile_setting">Profile Setting</string>
+    <string name="update_username">New username</string>
+
+    <string name="location_access">Acess to my location</string>
+
 </resources>

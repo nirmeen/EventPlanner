@@ -407,6 +407,11 @@ public class MainActivity extends AppCompatActivity implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.profile_setting_btn:
+                Intent i = new Intent(MainActivity.this, UserSetting.class);
+                startActivityForResult(i, 000);
+                //startActivity(i);
+                return true;
             case R.id.invite_menu:
                 sendInvitation();
                 return true;
@@ -470,11 +475,16 @@ public class MainActivity extends AppCompatActivity implements
                 });
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(TAG, "onActivityResult: requestCode=" + requestCode + ", resultCode=" + resultCode);
-
+        if (requestCode == 000) {
+            if (resultCode == RESULT_OK) {
+                this.onRestart();
+            }
+        }
         if (requestCode == REQUEST_IMAGE) {
             if (resultCode == RESULT_OK) {
                 if (data != null) {

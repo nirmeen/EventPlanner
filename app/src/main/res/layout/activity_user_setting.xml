@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:paddingBottom="10dp"
+    android:paddingEnd="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingStart="10dp"
+    android:paddingTop="10dp"
+    tools:context="com.google.firebase.codelab.friendlychat.UserSetting"
+    tools:padding="10dp"
+    tools:paddingBottom="10dp"
+    tools:paddingLeft="10dp"
+    tools:paddingRight="10dp">
+
+    <TextView
+        android:id="@+id/setting_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="@string/profile_setting"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/newUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/setting_title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:hint="@string/update_username"
+        android:inputType="text" />
+    <Switch
+        android:id="@+id/LocationSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/newUsername"
+        android:layout_marginTop="20dp"
+        android:text="@string/location_access" />
+
+    <Button
+        android:id="@+id/btnChoose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/setting_title"
+        android:layout_marginBottom="90dp"
+        android:background="@color/pf_grey_light"
+        android:text="Choose" />
+
+    <Button
+        android:id="@+id/btnUpload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnChoose"
+        android:layout_alignBottom="@+id/btnChoose"
+        android:layout_alignEnd="@+id/setting_title"
+        android:background="@color/colorPrimary"
+        android:text="Upload" />
+
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_above="@+id/btnUpload"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="14dp"
+        app:srcCompat="@drawable/ic_account_circle_black_36dp" />
+
+    <Button
+        android:id="@+id/saveProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:text="Save" />
+
+    <TextView
+        android:id="@+id/ProfileImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Profile image" />
+
+
+</RelativeLayout>

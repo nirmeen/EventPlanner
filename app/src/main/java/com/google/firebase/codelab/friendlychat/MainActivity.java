@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements
     public static final String MESSAGES_CHILD = "messages";
     private static final int REQUEST_INVITE = 1;
     private static final int REQUEST_IMAGE = 2;
+    private static final int REQUEST_User_Update = 4;
     public static final int DEFAULT_MSG_LENGTH_LIMIT = 10;
     public static final String ANONYMOUS = "anonymous";
     private static final String MESSAGE_SENT_EVENT = "message_sent";
@@ -409,7 +410,7 @@ public class MainActivity extends AppCompatActivity implements
         switch (item.getItemId()) {
             case R.id.profile_setting_btn:
                 Intent i = new Intent(MainActivity.this, UserSetting.class);
-                startActivityForResult(i, 000);
+                startActivityForResult(i, REQUEST_User_Update);
                 //startActivity(i);
                 return true;
             case R.id.invite_menu:
@@ -480,9 +481,16 @@ public class MainActivity extends AppCompatActivity implements
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         Log.d(TAG, "onActivityResult: requestCode=" + requestCode + ", resultCode=" + resultCode);
-        if (requestCode == 000) {
+        //not working
+        if (requestCode == REQUEST_User_Update) {
             if (resultCode == RESULT_OK) {
-                this.onRestart();
+                mFirebaseUser = mFirebaseAuth.getCurrentUser();
+                if(mFirebaseUser.getDisplayName() != null){
+                    mUsername = mFirebaseUser.getDisplayName();
+                }
+                if (mFirebaseUser.getPhotoUrl() != null) {
+                    mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
+                }
             }
         }
         if (requestCode == REQUEST_IMAGE) {

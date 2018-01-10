@@ -38,7 +38,7 @@ public class UserSetting extends AppCompatActivity {
     private ImageView imageView;
 
     private Uri filePath;
-    private Uri uploadedPath;
+    private boolean imageUploaded = false;
     private final int PICK_IMAGE_REQUEST = 71;
 
     //Firebase
@@ -56,9 +56,7 @@ public class UserSetting extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
 
-/*
-
-        if (mFirebaseUser != null) {
+        /*if (mFirebaseUser != null) {
             for (UserInfo profile : mFirebaseUser.getProviderData()) {
                 // Id of the provider (ex: google.com)
                 String providerId = profile.getProviderId();
@@ -102,8 +100,6 @@ public class UserSetting extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveProfile();
-                setResult(RESULT_OK, null);
-                finish();
             }
         });
     }
@@ -112,11 +108,11 @@ public class UserSetting extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         String username = usernameText.getText().toString();
-        if(username == null){
+        if(username == null || username.equals(" ") || username.isEmpty()){
             username = user.getDisplayName();
         }
 
-        if(filePath == null){
+        if(filePath == null || imageUploaded == false){
             filePath  = user.getPhotoUrl();
         }
 
@@ -131,7 +127,13 @@ public class UserSetting extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Log.d("user profile", "User profile updated.");
+                            setResult(RESULT_OK, null);
+                            finish();
+                        }else{
+                            setResult(RESULT_CANCELED, null);
+                            finish();
                         }
+
                     }
                 });
     }
@@ -174,6 +176,7 @@ public class UserSetting extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
                             filePath = taskSnapshot.getDownloadUrl();
+                            imageUploaded = true;
                             Toast.makeText(UserSetting.this, "Uploaded", Toast.LENGTH_SHORT).show();
                         }
                     })
@@ -181,6 +184,7 @@ public class UserSetting extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
+                            imageUploaded = false;
                             Toast.makeText(UserSetting.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })

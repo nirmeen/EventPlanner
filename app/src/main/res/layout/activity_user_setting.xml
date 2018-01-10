@@ -68,8 +68,8 @@
 
     <ImageView
         android:id="@+id/imgView"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_above="@+id/btnUpload"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="14dp"

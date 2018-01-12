@@ -413,6 +413,10 @@ public class MainActivity extends AppCompatActivity implements
                 startActivityForResult(i, REQUEST_User_Update);
                 //startActivity(i);
                 return true;
+            case R.id.parties_btn:
+                Intent p = new Intent(MainActivity.this, PartyActivity.class);
+                startActivity(p);
+                return true;
             case R.id.invite_menu:
                 sendInvitation();
                 return true;

@@ -5,7 +5,9 @@
     <item
         android:id="@+id/profile_setting_btn"
         android:title="@string/profile_setting"/>
-
+    <item
+        android:id="@+id/parties_btn"
+        android:title="@string/parties"/>
     <item
         android:id="@+id/sign_out_menu"
         android:title="@string/sign_out"

@@ -1,10 +1,12 @@
 package com.google.firebase.codelab.friendlychat;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -30,6 +32,9 @@ import com.google.firebase.storage.StorageReference;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PartyActivity extends AppCompatActivity {
+    public static final String partyName = "partyName";
+    public static final String partyID = "id";
+
     public static class PartyViewHolder extends RecyclerView.ViewHolder {
         TextView partyNameTextView;
         TextView startTimeTextView;
@@ -99,7 +104,7 @@ public class PartyActivity extends AppCompatActivity {
             protected void onBindViewHolder(final PartyViewHolder viewHolder,
                                             int position,
                                             Party party) {
-                Log.i("parties list", "p startdate "+party.getStartTime());
+
                 if (party.getName() != null) {
                     viewHolder.partyNameTextView.setText(party.getName());
                     viewHolder.partyNameTextView.setVisibility(TextView.VISIBLE);
@@ -153,8 +158,22 @@ public class PartyActivity extends AppCompatActivity {
             }
         });
 
+        mPartyRecyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
         mPartyRecyclerView.setLayoutManager(mLinearLayoutManager);
         mPartyRecyclerView.setAdapter(mFirebaseAdapter);
+        mPartyRecyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        // TODO Handle item click
+                        Party partyRef = mFirebaseAdapter.getItem(position);
+                        Intent intent = new Intent(PartyActivity.this, PartyActionActivity.class);
+                        intent.putExtra(partyID, ""+partyRef.getId());
+                        intent.putExtra(partyName, partyRef.getName());
+                        startActivity(intent);
+
+                    }
+                })
+        );
     }
     @Override
     public void onPause() {

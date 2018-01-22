@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.google.firebase.codelab.friendlychat.PartyActionActivity"
+    android:padding="10dp"
+    android:paddingBottom="10dp"
+    android:paddingEnd="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingStart="10dp"
+    android:paddingTop="10dp"
+    tools:padding="10dp"
+    tools:paddingBottom="10dp"
+    tools:paddingLeft="10dp"
+    tools:paddingRight="10dp">
+
+    <TextView
+        android:id="@+id/partyNameTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <CheckBox
+        android:id="@+id/attendingCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/partyNameTextView2"
+        android:layout_marginTop="16dp"
+        android:text="Attending" />
+
+    <CheckBox
+        android:id="@+id/checkInBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/attendingCheckBox"
+        android:layout_alignBottom="@+id/attendingCheckBox"
+        android:layout_marginStart="22dp"
+        android:layout_toEndOf="@+id/attendingCheckBox"
+        android:text="Check in" />
+
+    <TextView
+        android:id="@+id/attendTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/attendingCheckBox"
+        android:layout_marginTop="17dp"
+        android:text="Attending" />
+
+    <ListView
+        android:id="@+id/attendListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/attendTextView" />
+
+
+
+
+</RelativeLayout>

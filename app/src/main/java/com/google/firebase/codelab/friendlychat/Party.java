@@ -13,6 +13,7 @@ public class Party {
     private String organizerName;
     private String organizerRating;
     private String imageUrl;
+    private Object attendees;
 
     public Party(){
 
@@ -90,5 +91,13 @@ public class Party {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Object getAttendees() {
+        return attendees;
+    }
+
+    public void setAttendees(Object attendees) {
+        this.attendees = attendees;
     }
 }

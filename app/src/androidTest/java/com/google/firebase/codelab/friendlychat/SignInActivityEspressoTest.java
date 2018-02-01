@@ -39,7 +39,18 @@ public class SignInActivityEspressoTest {
 
     @Test
     public void verifySignUpButtonDisplayed() {
+        //check is google signin button is displayed
         onView(ViewMatchers.withId(R.id.sign_in_button)).check(matches(isDisplayed()));
+    }
+    @Test
+    public void verifySignUpPhoneButtonDisplayed() {
+        //check is phone signin button is displayed
+        onView(ViewMatchers.withId(R.id.phone_sign_in)).check(matches(isDisplayed()));
+    }
+    @Test
+    public void verifySignInTitleDisplayed() {
+        //check is  signin title is displayed
+        onView(ViewMatchers.withId(R.id.textView)).check(matches(isDisplayed()));
     }
 
 }
